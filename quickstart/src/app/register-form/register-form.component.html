@@ -1,0 +1,47 @@
+<button class="redirectBtn" [routerLink]="['../studentDetails']">Back to Student Details</button>
+<form class="registerForm" [formGroup]="registerForm" (ngSubmit)="onFormSubmit(registerForm)">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName" >
+      <p *ngIf="!registerForm.controls['firstName'].valid && registerForm.controls['firstName'].touched 
+      && (registerForm.controls['firstName'].hasError('required') || registerForm.controls['firstName'].hasError('pattern'))">
+        Please enter valid First Name</p>
+      <p *ngIf="registerForm.controls['firstName'].hasError('maxlength')">First name must not exceed 20 characters </p>
+    </label>
+  
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName" maxlength="20">
+      <p *ngIf="!registerForm.controls['lastName'].valid && registerForm.controls['lastName'].touched 
+      && (registerForm.controls['lastName'].hasError('required') || registerForm.controls['lastName'].hasError('pattern'))">
+        Please enter valid Last Name</p>
+      <p *ngIf="registerForm.controls['lastName'].hasError('maxlength')">Last name must not exceed 20 characters </p>
+    </label>
+
+    <label>
+        Class:
+        <input type="text" formControlName="class">
+        <p *ngIf="!registerForm.controls['class'].valid && registerForm.controls['class'].touched 
+      && registerForm.controls['class'].hasError('required')">Required</p>
+      </label>
+    
+      <label>
+        Year of passing:
+        <input type="number" formControlName="yearOfPassing">
+        <p *ngIf="!registerForm.controls['yearOfPassing'].valid && registerForm.controls['yearOfPassing'].touched 
+      && registerForm.controls['yearOfPassing'].hasError('required')">Enter valid year</p>
+      <p *ngIf="registerForm.controls['yearOfPassing'].hasError('max')">Year of Passing must be not later than 2017</p>
+      </label>
+
+      <label>
+        Percentage: 
+        <input type="text" formControlName="percentage">
+        <p *ngIf="!registerForm.controls['percentage'].valid && registerForm.controls['percentage'].touched 
+      && registerForm.controls['percentage'].hasError('required')">Required</p>
+      <p *ngIf="registerForm.controls['percentage'].hasError('pattern')">Enter valid percentage</p>
+      </label>
+
+      <button type="submit" [ngClass]="registerForm.invalid?'notAllowed':'canSubmit'" [disabled]="registerForm.invalid">Submit</button>
+  </form>
+  
+  <!-- [disabled]="registerForm.invalid" -->

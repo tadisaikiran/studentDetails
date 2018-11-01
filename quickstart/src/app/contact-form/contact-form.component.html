@@ -1,0 +1,20 @@
+<table>
+  <thead>
+      <th colspan="4">Student Result Board</th>
+  </thead>
+  <tbody>
+      <tr class="head-main">
+          <th>Student Name</th>
+          <th>Roll Number</th>
+          <th>Total Marks</th>
+          <th>Status</th>
+      </tr>
+      <tr [ngClass]="student.status" *ngFor="let student of studentMarksDetails">
+          <td class="name-caps">{{student.name}}</td>
+          <td>{{student.rollNumber}}</td>
+          <td>{{student.totalMarks}}</td>
+          <td>{{student.status}}</td>
+      </tr>
+  </tbody>
+</table>
+<button [routerLink] = "['/registerForm']">Register here</button>
